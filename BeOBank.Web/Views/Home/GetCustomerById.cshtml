@@ -1,0 +1,61 @@
+﻿@model BeOBank.Web.ViewModels.CustomerDetailsViewModel
+@{
+    ViewData["Title"] = "Customer Details";
+}
+<h2>Customer Details</h2>
+
+<table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Account Number</th>
+                <th>Balance</th>
+                <th>Transactions</th>
+            </tr>
+        </thead>
+        <tbody>
+             
+                <tr>
+                    <td>@Model.Name</td>
+                    <td>@Model.Surname</td>
+                    <td>@(Model.AccountDetails?.AccountNumber ?? Guid.Empty)</td>
+                    <td>@(Model.AccountDetails?.Balance ?? 0)</td>
+                    <td>
+                        @{
+                            var transactionCounter = 1;
+                        }
+                        @if (Model.AccountDetails?.Transactions != null && Model.AccountDetails.Transactions.Any())
+                        {
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Transaction ID</th>
+                                        <th>Date</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var transaction in Model.AccountDetails.Transactions)
+                                    {
+                                        <tr>
+                                            <th>@transactionCounter</th>
+                                            <td>@transaction.DateTime</td>
+                                            <td>@transaction.CreditAmount</td>
+                                        </tr>
+                                        transactionCounter++;
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <p>No transactions available.</p>
+                        }
+                    </td>
+
+                </tr>
+             
+        </tbody>
+    </table>
+ 

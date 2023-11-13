@@ -1,0 +1,7 @@
+﻿@{
+    var statusCode = ViewData["StatusCode"] as int? ?? 500;
+    ViewData["Title"] = "Error " + statusCode;
+}
+
+<h3 class="text-danger">An error occurred:Status Code : @statusCode</h3>
+<p>We're sorry, but an error occurred while processing your request.</p>

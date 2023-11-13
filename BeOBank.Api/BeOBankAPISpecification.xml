@@ -1,0 +1,254 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BeOBank.Web.Api</name>
+    </assembly>
+    <members>
+        <member name="T:BeOBank.Web.Api.Controllers.CustomerController">
+            <summary>
+            API Controller for Customer.
+            </summary>
+        </member>
+        <member name="M:BeOBank.Web.Api.Controllers.CustomerController.#ctor(BeOBank.Web.Api.Services.CustomerAccountService.ICustomerAccountService)">
+            <inheritdoc />
+        </member>
+        <member name="M:BeOBank.Web.Api.Controllers.CustomerController.GetCustomerById(System.Int32)">
+            <summary>
+            Get customer account details by ID.
+            </summary>
+            <param name="id">The ID of the customer.</param>
+            <returns>The response containing the details of the customer account.</returns>
+        </member>
+        <member name="M:BeOBank.Web.Api.Controllers.CustomerController.GetAllCustomers">
+            <summary>
+            Get all customer account details.
+            </summary>
+            <returns>The response containing the details of all customer accounts.</returns>
+        </member>
+        <member name="M:BeOBank.Web.Api.Controllers.CustomerController.CreateCustomerAccount(BeOBank.Web.Api.Services.CustomerAccountService.ServiceModels.CreateAccountRequest)">
+            <summary>
+            Create a customer account.
+            </summary>
+            <param name="request">The request to create a customer account or update value in existing.</param>
+            <returns>The response indicating the result of the account creation or updation.</returns>
+        </member>
+        <member name="T:BeOBank.Web.Api.Models.Account">
+            <summary>
+            Represents a customer Current account.
+            </summary>
+        </member>
+        <member name="M:BeOBank.Web.Api.Models.Account.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BeOBank.Web.Api.Models.Account"/> class.
+            </summary>
+        </member>
+        <member name="P:BeOBank.Web.Api.Models.Account.AccountNumber">
+            <summary>
+            Gets the unique identifier of the account.
+            </summary>
+        </member>
+        <member name="P:BeOBank.Web.Api.Models.Account.Balance">
+            <summary>
+            Gets the current balance of the account, including all transactions.
+            </summary>
+        </member>
+        <member name="P:BeOBank.Web.Api.Models.Account.Transactions">
+            <summary>
+            Gets or sets the list of transactions associated with the account.
+            </summary>
+        </member>
+        <member name="T:BeOBank.Web.Api.Models.CustomerDetails">
+            <summary>
+            Represents details about a customer.
+            </summary>
+        </member>
+        <member name="P:BeOBank.Web.Api.Models.CustomerDetails.CustomerId">
+            <summary>
+            Gets or initializes the unique identifier of the customer.
+            </summary>
+        </member>
+        <member name="P:BeOBank.Web.Api.Models.CustomerDetails.Name">
+            <summary>
+            Gets or sets the name of the customer.
+            </summary>
+        </member>
+        <member name="P:BeOBank.Web.Api.Models.CustomerDetails.Surname">
+            <summary>
+            Gets or sets the surname of the customer.
+            </summary>
+        </member>
+        <member name="P:BeOBank.Web.Api.Models.CustomerDetails.AccountDetails">
+            <summary>
+            Gets or sets the account details associated with the customer.
+            </summary>
+        </member>
+        <member name="T:BeOBank.Web.Api.Models.CustomerTransaction">
+            <summary>
+            Represents a customer transaction.
+            </summary>
+        </member>
+        <member name="M:BeOBank.Web.Api.Models.CustomerTransaction.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BeOBank.Web.Api.Models.CustomerTransaction"/> class.
+            </summary>
+        </member>
+        <member name="P:BeOBank.Web.Api.Models.CustomerTransaction.Id">
+            <summary>
+            Gets the unique identifier of the transaction.
+            </summary>
+        </member>
+        <member name="P:BeOBank.Web.Api.Models.CustomerTransaction.DateTime">
+            <summary>
+            Gets the date and time of the transaction.
+            </summary>
+        </member>
+        <member name="P:BeOBank.Web.Api.Models.CustomerTransaction.CreditAmount">
+            <summary>
+            Gets or sets the credit amount in the transaction.
+            </summary>
+        </member>
+        <member name="T:BeOBank.Web.Api.Services.CustomerAccountService.CustomerAccountService">
+            <summary>
+            CustomerAccountService
+            </summary>
+        </member>
+        <member name="M:BeOBank.Web.Api.Services.CustomerAccountService.CustomerAccountService.#ctor(System.Collections.Generic.IList{BeOBank.Web.Api.Models.CustomerDetails},BeOBank.Web.Api.Services.TransactionsService.ITransactionsService)">
+            <summary>
+            CustomerAccountService
+            </summary>
+            <param name="customers"></param>
+            <param name="transactionsService"></param>
+        </member>
+        <member name="M:BeOBank.Web.Api.Services.CustomerAccountService.CustomerAccountService.CreateCustomerAccount(BeOBank.Web.Api.Services.CustomerAccountService.ServiceModels.CreateAccountRequest)">
+            <summary>
+            CreateCustomerAccount
+            </summary>
+            <param name="createAccountRequest"></param>
+            <returns>CreateAccountResponse</returns>
+        </member>
+        <member name="M:BeOBank.Web.Api.Services.CustomerAccountService.CustomerAccountService.GetCustomerById(System.Int32)">
+            <summary>
+            GetCustomerById
+            </summary>
+            <param name="id"></param>
+            <returns>CustomerDetails</returns>
+        </member>
+        <member name="M:BeOBank.Web.Api.Services.CustomerAccountService.CustomerAccountService.GetAllCustomerDetails">
+            <summary>
+            GetAllCustomerDetails
+            </summary>
+            <returns>List of CustomerDetails</returns>
+        </member>
+        <member name="T:BeOBank.Web.Api.Services.CustomerAccountService.Enums.CreateAccountMessage">
+            <summary>
+            Represents messages for the result.
+            </summary>
+        </member>
+        <member name="F:BeOBank.Web.Api.Services.CustomerAccountService.Enums.CreateAccountMessage.AmountCreditedSuccessfully">
+            <summary>
+            The amount was credited to the account successfully.
+            </summary>
+        </member>
+        <member name="F:BeOBank.Web.Api.Services.CustomerAccountService.Enums.CreateAccountMessage.AccountCreatedAndAmountCreditedSuccessfully">
+            <summary>
+            The account was created, and the amount was credited successfully.
+            </summary>
+        </member>
+        <member name="F:BeOBank.Web.Api.Services.CustomerAccountService.Enums.CreateAccountMessage.Error">
+            <summary>
+            An error occurred during the account creation process.
+            </summary>
+        </member>
+        <member name="T:BeOBank.Web.Api.Services.CustomerAccountService.ICustomerAccountService">
+            <summary>
+            ICustomerAccountService
+            </summary>
+        </member>
+        <member name="M:BeOBank.Web.Api.Services.CustomerAccountService.ICustomerAccountService.CreateCustomerAccount(BeOBank.Web.Api.Services.CustomerAccountService.ServiceModels.CreateAccountRequest)">
+            <summary>
+            CreateCustomerAccount
+            </summary>
+            <param name="createAccountRequest"></param>
+            <returns>CreateAccountResponse</returns>
+        </member>
+        <member name="M:BeOBank.Web.Api.Services.CustomerAccountService.ICustomerAccountService.GetCustomerById(System.Int32)">
+            <summary>
+            GetCustomer By Id
+            </summary>
+            <param name="id"></param>
+            <returns>CustomerDetails</returns>
+        </member>
+        <member name="M:BeOBank.Web.Api.Services.CustomerAccountService.ICustomerAccountService.GetAllCustomerDetails">
+            <summary>
+            Get AllCustomer Details
+            </summary>
+            <returns>List of CustomerDetails</returns>
+        </member>
+        <member name="T:BeOBank.Web.Api.Services.CustomerAccountService.ServiceModels.CreateAccountRequest">
+            <summary>
+            Represents a request to create a customer account.
+            </summary>
+        </member>
+        <member name="P:BeOBank.Web.Api.Services.CustomerAccountService.ServiceModels.CreateAccountRequest.CustomerId">
+            <summary>
+            Gets or sets the unique identifier of the customer.
+            </summary>
+        </member>
+        <member name="P:BeOBank.Web.Api.Services.CustomerAccountService.ServiceModels.CreateAccountRequest.InitialCredit">
+            <summary>
+            Gets or sets the initial credit amount for the customer account.
+            </summary>
+        </member>
+        <member name="T:BeOBank.Web.Api.Services.CustomerAccountService.ServiceModels.CreateAccountResponse">
+            <summary>
+            Represents the response for creating a customer account.
+            </summary>
+        </member>
+        <member name="P:BeOBank.Web.Api.Services.CustomerAccountService.ServiceModels.CreateAccountResponse.MessageToCustomer">
+            <summary>
+            Gets or sets the message indicating the result of the account creation.
+            </summary>
+        </member>
+        <member name="T:BeOBank.Web.Api.Services.TransactionsService.ITransactionsService">
+            <summary>
+            ITransactionsService
+            </summary>
+        </member>
+        <member name="M:BeOBank.Web.Api.Services.TransactionsService.ITransactionsService.AddTransaction(BeOBank.Web.Api.Services.TransactionsService.ServiceModels.TransactionRequest)">
+            <summary>
+            AddTransaction
+            </summary>
+            <param name="transactionRequest"></param>
+            <returns>CustomerTransaction</returns>
+        </member>
+        <member name="T:BeOBank.Web.Api.Services.TransactionsService.ServiceModels.TransactionRequest">
+            <summary>
+            TransactionRequest
+            </summary>
+        </member>
+        <member name="P:BeOBank.Web.Api.Services.TransactionsService.ServiceModels.TransactionRequest.CustomerId">
+            <summary>
+            CustomerId
+            </summary>
+        </member>
+        <member name="P:BeOBank.Web.Api.Services.TransactionsService.ServiceModels.TransactionRequest.CreditAmount">
+            <summary>
+            CreditAmount
+            </summary>
+        </member>
+        <member name="T:BeOBank.Web.Api.Services.TransactionsService.TransactionsService">
+            <summary>
+            TransactionsService
+            </summary>
+        </member>
+        <member name="M:BeOBank.Web.Api.Services.TransactionsService.TransactionsService.#ctor(System.Collections.Generic.IList{BeOBank.Web.Api.Models.CustomerDetails})">
+            <summary>
+            TransactionsService
+            </summary>
+            <param name="customers"></param>
+        </member>
+        <member name="M:BeOBank.Web.Api.Services.TransactionsService.TransactionsService.AddTransaction(BeOBank.Web.Api.Services.TransactionsService.ServiceModels.TransactionRequest)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

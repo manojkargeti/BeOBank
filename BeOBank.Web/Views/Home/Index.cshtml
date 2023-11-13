@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "HomePage";
+}
+
+@model BeOBank.Web.ViewModels.CreateAccountViewModel
+<h2>Customer Credit</h2>
+@using (Html.BeginForm("CreateCustomerAccount", "Home", FormMethod.Post))
+{
+    <div style="width: 40%; ">
+        <label asp-for="CustomerId">Customer ID:</label>
+        <input asp-for="CustomerId" class="form-control" type="number" min="1" max="4" placeholder="Enter a customer ID (1, 2, 3, or 4)" required />
+        <span asp-validation-for="CustomerId"></span>
+
+        <label asp-for="InitialCredit">Initial Credit:</label>
+        <input asp-for="InitialCredit" class="form-control" type="number" placeholder="Enter initial credit" required />
+      
+        <span asp-validation-for="InitialCredit"></span>
+    </div>
+
+    <div style="width: 60%; margin-top: 10px;">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+   
+}
