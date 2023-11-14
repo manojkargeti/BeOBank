@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BeOBank\BeOBank.Web.Api.csproj" />
+    <ProjectReference Include="..\BeOBank.Api\BeOBank.Web.Api.csproj" />
   </ItemGroup>
 
 </Project>

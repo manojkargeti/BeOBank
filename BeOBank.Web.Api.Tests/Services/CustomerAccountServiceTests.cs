@@ -13,7 +13,10 @@ namespace BeOBank.Web.Api.Tests.Services
     {
         #region Fields
 
-        private IList<CustomerDetails> _customers;
+        #pragma warning disable CS8618
+                private IList<CustomerDetails> _customers;
+        #pragma warning restore CS8618
+
 
         #endregion
 
@@ -24,7 +27,7 @@ namespace BeOBank.Web.Api.Tests.Services
         {
             _customers = new List<CustomerDetails>
             {
-                new CustomerDetails { CustomerId = 1, Name = "John", Surname = "Doe" } 
+                new CustomerDetails { CustomerId = 1, Name = "John", Surname = "Doe" }
             };
         }
 
@@ -39,7 +42,7 @@ namespace BeOBank.Web.Api.Tests.Services
 
             var transactionsServiceMock = new Mock<ITransactionsService>();
             transactionsServiceMock.Setup(x => x.AddTransaction(It.IsAny<TransactionRequest>()))
-                .Returns(new CustomerTransaction ()
+                .Returns(new CustomerTransaction()
                 {
                     CreditAmount = 101
                 });
